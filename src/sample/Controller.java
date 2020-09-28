@@ -10,43 +10,22 @@ import java.io.IOException;
 
 public class Controller {
     private Logic logic;
-    private Interface ui;
+    private FieldController controller;
+    private Gamescreen ui;
     private Stage stage;
-
-    public void setLogic(Logic logic) {
-        this.logic = logic;
-    }
-
-    public void setInterface(Interface ui) {
-        this.ui = ui;
-    }
-
-
-    @FXML
-    public void up() {
-        logic.moveUp();
-    }
-    @FXML
-    public void down() {
-        logic.moveDown();
-    }
-    @FXML
-    public void left() {
-        logic.moveLeft();
-    }
-    @FXML
-    public void right() {
-        logic.moveRight();
-    }
 
     @FXML
     public void play() throws IOException {
         logic = new Logic(4,4);
-        ui = new Interface(logic);
+        logic.newGame();
+        ui = new Gamescreen(logic);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/game.fxml"));
         Parent content = loader.load();
+        controller = loader.getController();
+        controller.createGameField(logic);
+        controller.createGamescreen(ui);
 
-        Scene scene = new Scene(content, 570, 393);
+        Scene scene = new Scene(content, 500, 400);
         stage.setScene(scene);
         content.requestFocus();
     }
@@ -54,4 +33,5 @@ public class Controller {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
 }

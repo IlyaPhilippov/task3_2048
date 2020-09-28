@@ -17,7 +17,7 @@ public class Main extends Application {
         controller.setStage(stage);
 
         Scene scene = new Scene(content, 500, 400);
-        stage.setTitle("ILYA");
+        stage.setTitle("2048 - game");
         stage.setScene(scene);
         stage.show();
     }
