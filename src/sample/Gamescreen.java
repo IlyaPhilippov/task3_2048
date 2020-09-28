@@ -14,7 +14,6 @@ public class Gamescreen {
         private Map<Integer, Image> pictures;
         private final int WIDTH = 400;
         private final int HEIGHT = 400;
-        private FieldController control;
 
         public Gamescreen(Logic logic) throws FileNotFoundException {
             this.logic = logic;
